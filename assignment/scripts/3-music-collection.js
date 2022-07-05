@@ -31,3 +31,22 @@ function showCollection( collectionIndex ) {
 }
 
 showCollection(1);
+
+function findByArtist( artistName ){
+    let matchedSearch = [];
+
+    for ( let i = 0; i<collection.length; i++)
+         if ( artistName === collection[i].artist ) {
+            matchedSearch.push(collection[i])
+    } else {
+
+    }
+    console.log(matchedSearch);
+}
+
+console.log('Searching Lil Peep, We expect 2 matches found');
+findByArtist( 'Lil Peep' );
+console.log('Searching Merle Haggard & The Strangers, We expect 1 match found');
+findByArtist( 'Merle Haggard & The Strangers' )
+console.log('Searching G-Eazy, We expect 0 matches found');
+findByArtist( 'G-Eazy' )
