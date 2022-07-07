@@ -79,9 +79,9 @@ function showCollection( collectionIndex ) {
     console.log('There are ' + collection.length + ' Albums in this collection');
 
     let number = 0;
-
     for ( let i = 0; i<collection.length; i++) {
         console.log( collection[i].title + ' by ' + collection[i].artist + ' published in ' + collection[i].yearPublished);
+
         for ( let i = 0; i<collection[number].tracks.length; i++){
         console.log( 'Title: ' + collection[number].tracks[i].name + " Duration: " + collection[number].tracks[i].duration );
         }
@@ -129,7 +129,7 @@ function search( artistName, year ){
     }
 }
 
-console.log('We are searching for Lil Peep and 2018', search( 'Lil Peep', 2018));
-console.log('We are searching for Young Dolph and 2021', search( 'Young Dolph', 2021));
+console.log('We are searching for Lil Peep and 2017', search( 'Lil Peep', 2017 ));
+console.log('We are searching for Young Dolph and 2021', search( 'Young Dolph', 2021 ));
 console.log('We are leaving search blank', search());
 
