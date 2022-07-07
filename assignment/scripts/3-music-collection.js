@@ -2,22 +2,74 @@ console.log('***** Music Collection *****')
 
 let collection = [];
 
-function addToCollection( albumName, artistName, year) {
+function addToCollection( albumName, artistName, year, tracks) {
     let newAlbum = {
         title: albumName,
         artist: artistName,
-        yearPublished: year
+        yearPublished: year,
+        tracks: tracks
     }
     collection.push(newAlbum);
     console.log(collection[collection.length - 1]);
 }
 
-addToCollection( 'Come Over When You\'re Sober, Part. 2', 'Lil Peep', 2018);
-addToCollection( 'Dr. Feelgood', 'Motley Crue', 1989);
-addToCollection( 'Star Shopping', 'Lil Peep', 2017);
-addToCollection( 'Tickets to My Downfall', 'MGK', 2020);
-addToCollection( 'Photographs & Memories', 'Jim Croce', 1972);
-addToCollection( 'Mama Tried', 'Merle Haggard & The Strangers', 1968);
+addToCollection(
+    'Come Over When You\'re Sober, Part. 1',
+    'Lil Peep',
+    2017,
+    [
+       {name: 'Benz Truck', duration: '2:39'},
+       {name: 'Save That Sh*t', duration: '3:51'},
+       {name: 'Awful Things', duration: '3:34'},
+       {name: 'U Said', duration: '3:44'},
+       {name: 'Better Off', duration: '2:34'},
+       {name: 'The Brightside', duration: '3:36'},
+       {name: 'Problems', duration: '3:29'}
+    ]);
+addToCollection(
+    'Dr. Feelgood',
+    'Motley Crue',
+    1989,
+    [
+        {name: 'Dr. Feelgood', duration: '4:51'},
+        {name: 'Kickstart My Heart', duration: '4:44'},
+     ]);
+addToCollection(
+    'Star Shopping',
+    'Lil Peep',
+    2017,
+    [
+        {name: 'Star Shopping', duration: '2:22'},
+     ]);
+addToCollection(
+    'Tickets to My Downfall',
+    'MGK',
+    2020,
+    [
+        {name: 'Title Track', duration: '2:45'},
+        {name: 'kiss kiss', duration: '2:18'},
+        {name: 'Drunk Face', duration: '2:23'},
+        {name: 'Bloody Valentine', duration: '3:25'},
+        {name: 'Forget Me Too', duration: '2:51'},
+        {name: 'Nothing Inside', duration: '2:52'},
+     ]);
+addToCollection(
+    'Photographs & Memories',
+    'Jim Croce',
+    1972,
+    [
+        {name: 'Operator', duration: '3:50'},
+        {name: 'Time in a Bottle', duration: '2:26'},
+        {name: 'Rapid Roy', duration: '2:26'},
+        {name: 'Box #10', duration: '2:24'},
+     ]);
+addToCollection(
+    'Mama Tried',
+    'Merle Haggard & The Strangers',
+    1968,
+    [
+        {name: 'Mama Tried', duration: '2:14'},
+     ]);
 
 console.log(collection);
 
@@ -63,7 +115,6 @@ function search( artistName, year ){
             }
         }
         return searchResults;
-
     } else {
         for ( let i = 0; i<collection.length; i++ ){
             searchResults.push(collection[i]);
@@ -73,5 +124,6 @@ function search( artistName, year ){
 }
 
 console.log('We are searching for Lil Peep and 2018', search( 'Lil Peep', 2018));
-console.log('We are searching for Yo Gotti and 2022', search( 'Yo Gotti', 2022));
+console.log('We are searching for Young Dolph and 2021', search( 'Young Dolph', 2021));
 console.log('We are leaving search blank', search());
+
