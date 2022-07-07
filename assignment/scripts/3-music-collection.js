@@ -32,14 +32,14 @@ addToCollection(
     1989,
     [
         {name: 'Dr. Feelgood', duration: '4:51'},
-        {name: 'Kickstart My Heart', duration: '4:44'},
+        {name: 'Kickstart My Heart', duration: '4:44'}
      ]);
 addToCollection(
     'Star Shopping',
     'Lil Peep',
     2017,
     [
-        {name: 'Star Shopping', duration: '2:22'},
+        {name: 'Star Shopping', duration: '2:22'}
      ]);
 addToCollection(
     'Tickets to My Downfall',
@@ -51,7 +51,7 @@ addToCollection(
         {name: 'Drunk Face', duration: '2:23'},
         {name: 'Bloody Valentine', duration: '3:25'},
         {name: 'Forget Me Too', duration: '2:51'},
-        {name: 'Nothing Inside', duration: '2:52'},
+        {name: 'Nothing Inside', duration: '2:52'}
      ]);
 addToCollection(
     'Photographs & Memories',
@@ -61,14 +61,14 @@ addToCollection(
         {name: 'Operator', duration: '3:50'},
         {name: 'Time in a Bottle', duration: '2:26'},
         {name: 'Rapid Roy', duration: '2:26'},
-        {name: 'Box #10', duration: '2:24'},
+        {name: 'Box #10', duration: '2:24'}
      ]);
 addToCollection(
     'Mama Tried',
     'Merle Haggard & The Strangers',
     1968,
     [
-        {name: 'Mama Tried', duration: '2:14'},
+        {name: 'Mama Tried', duration: '2:14'}
      ]);
 
 console.log(collection);
@@ -78,8 +78,14 @@ function showCollection( collectionIndex ) {
     console.log(collection[collectionIndex]);
     console.log('There are ' + collection.length + ' Albums in this collection');
 
+    let number = 0;
+
     for ( let i = 0; i<collection.length; i++) {
         console.log( collection[i].title + ' by ' + collection[i].artist + ' published in ' + collection[i].yearPublished);
+        for ( let i = 0; i<collection[number].tracks.length; i++){
+        console.log( 'Title: ' + collection[number].tracks[i].name + " Duration: " + collection[number].tracks[i].duration );
+        }
+        number += 1;
     }
 }
 
