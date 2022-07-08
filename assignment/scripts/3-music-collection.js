@@ -13,6 +13,9 @@ function addToCollection( albumName, artistName, year, tracks) {
     console.log(collection[collection.length - 1]);
 }
 
+// For the addToCollection section I added all elements to the object and the came back an added the 'tracks' item. Below I added the tracks
+// as an array in the add to collection function. Each time add to collection is run we console log the last item added.
+
 addToCollection(
     'Come Over When You\'re Sober, Part. 1',
     'Lil Peep',
@@ -71,7 +74,15 @@ addToCollection(
         {name: 'Mama Tried', duration: '2:14'}
      ]);
 
+// After adding all of the albums to the collection. I console log the collection to make sure they have all been added.
+
 console.log(collection);
+
+// In the show collection section I came up with a way loop through each album and song. I created a variable called number and 
+// set the value to 0 to check the first album. As it goes through the first for loop, we concole log the album name and get into
+// a second loop where it goes through each song in the album and console logs that song name and durraction. Once we get to the 
+// end of the nested for loop that checks songs. we add 1 to the 'number' variable and go back through the parent loops that goes
+// through the albums and repeat until all albums and songs have been console logged.
 
 function showCollection( collectionIndex ) {
     console.log('When searching the object at index 1, we expect Dr. Feelgood by Motley Crue');
@@ -83,32 +94,45 @@ function showCollection( collectionIndex ) {
         console.log( collection[i].title + ' by ' + collection[i].artist + ' published in ' + collection[i].yearPublished);
 
         for ( let i = 0; i<collection[number].tracks.length; i++){
-        console.log( 'Title: ' + collection[number].tracks[i].name + " Duration: " + collection[number].tracks[i].duration );
-        }
-        number += 1;
-    }
-}
+        console.log( i+1 + '. Title: ' + collection[number].tracks[i].name + " Duration: " + collection[number].tracks[i].duration );
+        } //end track for loop
+        number += 1; //Adding 1 to number variable to go to next album in array.
+    } //end album for loop
+} //end showCollection function
 
-showCollection(1);
+showCollection(1); //here we are calling the showCollection function so it will show this on top and console log all of the albums 
+// in the collection.
+
+
+// In the find artist section. I created the function to take in artists name, then created a variable with an empty array to hold
+// any matching items. This functions loops through all of the albums and and return the matched search array at the end.
 
 function findByArtist( artistName ){
     let matchedSearch = [];
 
     for ( let i = 0; i<collection.length; i++)
          if ( artistName === collection[i].artist ) {
-            matchedSearch.push(collection[i])
+            matchedSearch.push(collection[i]);
     } else {
 
     }
-    console.log(matchedSearch);
+    return matchedSearch;
 }
 
 console.log('Searching Lil Peep, We expect 2 matches found');
-findByArtist( 'Lil Peep' );
+console.log(findByArtist( 'Lil Peep' ));
 console.log('Searching Merle Haggard & The Strangers, We expect 1 match found');
-findByArtist( 'Merle Haggard & The Strangers' )
+console.log(findByArtist( 'Merle Haggard & The Strangers' ));
 console.log('Searching G-Eazy, We expect 0 matches found');
-findByArtist( 'G-Eazy' )
+console.log(findByArtist( 'G-Eazy' ));
+
+
+//For the updated search section. I used the same concept as how I console logged all songs to go through all songs. However,
+// I mad the for loop that runs through the album titles only check artist and year. If artist and year match, then it goes through
+// the songs in that album to check for trackName matches. I also only pushed the track information into the search results tab.
+// At the end of this it returns the searchREsults array. I wrapped the loops in an iff statement so if no parrameters are endered,
+// the function will console log the whole colection.
+
 
 function search( artistName, year, track ){
     let searchResults = [];
@@ -122,26 +146,28 @@ function search( artistName, year, track ){
                          searchResults.push(collection[number].tracks[i]);
                     } else {
 
-                    }
-                }
-                number += 1;
+                    } //end 'track' if statement
+                } //end 'track' for loop
+                number += 1; //Adding 1 to number variable to go to next album in array.
             } else {
-                number += 1;
-            }          
+                number += 1; //Adding 1 to number variable to go to next album in array.
+            } //end 'album' if statement      
 
-
-            }
+            } //end 'album' for loop
             
         return searchResults;
     } else {
         for ( let i = 0; i<collection.length; i++ ){
             searchResults.push(collection[i]);
-        }
+        } //end for loop for pushing all of collection.
         return searchResults;
-    }
-}
+    } //end argument if statement
+} //end search function
 
+// We expect one result with this search.
 console.log('We are searching for Lil Peep, 2017, & Benz Truck', search( 'Lil Peep', 2017, 'Benz Truck' ));
+// We expect no result with this search.
 console.log('We are searching for Young Dolph and 2021', search( 'Young Dolph', 2021 ));
+// We expect the whole collection to be logged with this search.
 console.log('We are leaving search blank', search());
 
