@@ -110,16 +110,28 @@ findByArtist( 'Merle Haggard & The Strangers' )
 console.log('Searching G-Eazy, We expect 0 matches found');
 findByArtist( 'G-Eazy' )
 
-function search( artistName, year ){
+function search( artistName, year, track ){
     let searchResults = [];
+    let number = 0;
     if (arguments.length > 0){
-        for ( let i = 0; i<collection.length; i++ ){
-            if ( artistName === collection[i].artist && year === collection[i].yearPublished){
-                searchResults.push(collection[i]);
+
+        for ( let i = 0; i<collection.length; i++){
+            if ( artistName === collection[number].artist && year === collection[number].yearPublished ){
+                for ( let i = 0; i<collection[number].tracks.length; i++ ) {
+                    if ( track === collection[number].tracks[i].name ) {
+                         searchResults.push(collection[number].tracks[i]);
+                    } else {
+
+                    }
+                }
+                number += 1;
             } else {
+                number += 1;
+            }          
+
 
             }
-        }
+            
         return searchResults;
     } else {
         for ( let i = 0; i<collection.length; i++ ){
@@ -129,7 +141,7 @@ function search( artistName, year ){
     }
 }
 
-console.log('We are searching for Lil Peep and 2017', search( 'Lil Peep', 2017 ));
+console.log('We are searching for Lil Peep, 2017, & Benz Truck', search( 'Lil Peep', 2017, 'Benz Truck' ));
 console.log('We are searching for Young Dolph and 2021', search( 'Young Dolph', 2021 ));
 console.log('We are leaving search blank', search());
 
